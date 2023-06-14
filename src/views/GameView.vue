@@ -6,8 +6,10 @@
         <h1>Total Score: </h1>
         
     </div>
-    <div class="memory-cards">
-        <MemoryCard v-for="(card, index) in arrayOfCards" v-bind:key="generateKey(index)" v-bind:card="card"/>
+    <div class="card-container">
+        <div class="memory-cards">
+            <memory-card v-for="(card, index) in this.$store.state.arrayOfCards" v-bind:key="generateKey(index)" v-bind:card="card"/>
+        </div>
     </div>
   </div>
 </template>
@@ -19,27 +21,30 @@ export default {
     data() {
         return {
             
-            arrayOfCards: [],
+            
         }
     },
     name: 'GameView',
-    components: MemoryCard,
+    components: {MemoryCard},
     created() {
         this.$store.state.cards.forEach(card => {
-            this.arrayOfCards.push(card);
+            this.$store.state.arrayOfCards.push(card);
         });
-        const dupArray = this.arrayOfCards;
-        this.arrayOfCards = this.arrayOfCards.concat(dupArray);
+        for(let i = 0; i < 10; i++) {
+            let dupCard = {
+                name: this.$store.state.arrayOfCards[i].name,
+                image: this.$store.state.arrayOfCards[i].image,
+                showCard: false,
+            }
+            this.$store.state.arrayOfCards.push(dupCard);
+        }
         
         let id = 1;
-        for(let i = 0; i < this.arrayOfCards.length; i++) {
-            this.arrayOfCards[i].id = id;
-            console.log(this.arrayOfCards[i].id)
+        for(let i = 0; i < this.$store.state.arrayOfCards.length; i++) {
+            this.$store.state.arrayOfCards[i].id = id;
             id++;
         }
-        this.arrayOfCards = this.arrayOfCards.sort(() => Math.random() - 0.5);
-        
-        console.log(this.arrayOfCards);
+        this.$store.state.arrayOfCards = this.arrayOfCards.sort(() => Math.random() - 0.5);
     },
     methods: {
         generateKey(index) {
@@ -51,5 +56,17 @@ export default {
 </script>
 
 <style>
+.card-container {
+    display: flex;
+    justify-content: center;
 
+}
+.memory-cards {
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    align-items: center;
+}
 </style>

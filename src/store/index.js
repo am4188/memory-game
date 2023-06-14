@@ -7,56 +7,59 @@ export default new Vuex.Store({
   state: {
     cards: [
       {
-        name: 1,
-        image: "https://assets.entrepreneur.com/content/3x2/2000/20200429211042-GettyImages-1164615296.jpeg",
+        name: "Paolo",
+        image: '/paolo-banchero.webp',
         showCard: false
       },
       {
-        name: 2,
-        image: "test",
+        name: "Franz",
+        image: '/franz-wagner.webp',
         showCard: false
       },
       {
-        name: 3,
-        image: "",
+        name: "Giannis",
+        image: '/giannis-antetokounmpo.webp',
         showCard: false
       },
       {
-        name: 4,
-        image: "",
+        name: "Jamal",
+        image: '/jamal-murray.avif',
         showCard: false
       },
       {
-        name: 5,
-        image: "",
+        name: "Joel",
+        image: '/joel-embiid.webp',
         showCard: false
       },
       {
-        name: 6,
-        image: "",
+        name: "Kevin",
+        image: '/kevin-durant.avif',
         showCard: false
       },
       {
-        name: 7,
-        image: "",
+        name: "Lebron",
+        image: '/lebron-james.webp',
         showCard: false
       },
       {
-        name: 8,
-        image: "",
+        name: "Luka",
+        image: '/luka-doncic.webp',
         showCard: false
       },
       {
-        name: 9,
-        image: "",
+        name: "Nikola",
+        image: '/nikola-jokic.webp',
         showCard: false
       },
       {
-        name: 10,
-        image: "",
+        name: "Stephen",
+        image: '/stephen-curry.webp',
         showCard: false
       },
-    ]
+    ],
+    selectedCards: [],
+    matchedCards: [],
+    arrayOfCards: []
   },
   getters: {
   },
@@ -66,4 +69,5 @@ export default new Vuex.Store({
   },
   modules: {
   }
-})
+});
+
