@@ -11,10 +11,7 @@
 export default {
   data() {
     return {
-      selectedCards: this.$store.state.selectedCards,
-      matchedCards: this.$store.state.matchedCards,
-      attempts: 0,
-      matches: 0
+
     }
   },
   props: ['card'], 
@@ -24,34 +21,30 @@ export default {
       card.showCard = !card.showCard;
     },
     clicked(card) {
-      if(!card.showCard) {
+      if(!card.showCard && this.$store.state.selectedCards.length < 2) {
         card.showCard = true;
         // if card is second card, check if the two cards match
         this.$store.state.selectedCards.push(card);
         if(this.$store.state.selectedCards.length === 2) {
           if(this.checkForMatch()) {
-            console.log("checking for match")
             this.$store.state.matchedCards.push(this.$store.state.selectedCards[0]);
             this.$store.state.matchedCards.push(this.$store.state.selectedCards[1]);
             
-            this.matches++;
+            this.$store.state.selectedCards = [];
+            this.$store.state.matches++;
           } else {
-            console.log("not a match");
-            setTimeout(this.hideCards, 3000);
+            setTimeout(this.hideCards, 1200);
             
           }
-          setTimeout(this.hideCards, 3000);
+          //setTimeout(this.hideCards, 3000);
           
-          this.attempts++;
+          this.$store.state.attempts++;
         }
         console.log("and now the length of selectedCards is: " + this.$store.state.selectedCards.length);
         
       }
     },
     checkForMatch() {
-      console.log("checking for match");
-      console.log(this.$store.state.selectedCards[0].name);
-      console.log(this.$store.state.selectedCards[1].name);
       if(this.$store.state.selectedCards[0].name == this.$store.state.selectedCards[1].name) {
         return true;
       } else {
@@ -59,11 +52,9 @@ export default {
       }
     },
     hideCards() {
-      console.log(this.$store.state.selectedCards[0]);
-      const card1 = this.$store.state.cards.find(card => card.id === this.$store.state.selectedCards[0].id);
-      const card2 = this.$store.state.cards.find(card => card.id === this.$store.state.selectedCards[1].id);
-      card1.showCard = false;
-      card2.showCard = false;
+      this.$store.state.arrayOfCards.find(card => card.id === this.$store.state.selectedCards[0].id).showCard = false;
+      this.$store.state.arrayOfCards.find(card => card.id === this.$store.state.selectedCards[1].id).showCard = false;
+     
       this.$store.state.selectedCards = [];
     }
     
@@ -74,8 +65,34 @@ export default {
 <style>
 
 img {
-  height: 15rem;
-  width: 17rem;
+  height: 10.4rem;
+  width: 12rem;
   margin: 0.3rem;
+
+
+}
+
+.rotate {
+  animation: rotate-stop 5s infinite linear;
+  transform: rotate();
+}
+
+
+@keyframes rotate-stop{
+  0%{
+    transform: rotate(0deg);
+  }
+  5%, 25%{
+    transform: rotate(90deg);
+  }
+  30%, 50%{
+    transform: rotate(180deg);
+  }
+  55%, 75%{
+    transform: rotate(270deg);
+  }
+  80%, 100%{
+    transform: rotate(360deg);
+  }
 }
 </style>

@@ -56,10 +56,22 @@ export default new Vuex.Store({
         image: '/stephen-curry.webp',
         showCard: false
       },
+      {
+        name: "Donavan",
+        image: '/donavan-mitchell.webp',
+        showCard: false
+      },
+      {
+        name: "Damian",
+        image: '/damian-lillard.webp',
+        showCard: false
+      },
     ],
     selectedCards: [],
     matchedCards: [],
-    arrayOfCards: []
+    arrayOfCards: [],
+    attempts: 0,
+    matches: 0
   },
   getters: {
   },

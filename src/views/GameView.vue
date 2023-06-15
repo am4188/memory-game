@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="scoreboard">
-        <h1>Correct Selections: </h1>
-        <h1>Attempts: </h1>
-        <h1>Total Score: </h1>
+        <h1>Correct Selections: {{ $store.state.matches }}</h1>
+        <h1>Attempts: {{ $store.state.attempts }}</h1>
+        <h1>Match Percentage: {{calculateMatchPercentage() }}%</h1>
         
     </div>
     <div class="card-container">
@@ -30,7 +30,7 @@ export default {
         this.$store.state.cards.forEach(card => {
             this.$store.state.arrayOfCards.push(card);
         });
-        for(let i = 0; i < 10; i++) {
+        for(let i = 0; i < this.$store.state.cards.length; i++) {
             let dupCard = {
                 name: this.$store.state.arrayOfCards[i].name,
                 image: this.$store.state.arrayOfCards[i].image,
@@ -44,18 +44,33 @@ export default {
             this.$store.state.arrayOfCards[i].id = id;
             id++;
         }
-        this.$store.state.arrayOfCards = this.arrayOfCards.sort(() => Math.random() - 0.5);
+        this.$store.state.arrayOfCards = this.$store.state.arrayOfCards.sort(() => Math.random() - 0.5);
     },
     methods: {
         generateKey(index) {
             return 'item_' + index;
-  }
+        },
+        calculateMatchPercentage() {
+            if(this.$store.state.attempts == 0) {
+                return "";
+            }
+            return ((this.$store.state.matches/this.$store.state.attempts) * 100).toFixed(0);
+        }
     }
     
 }
 </script>
 
 <style>
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    border: 3px solid black;
+}
+
+.scoreboard > * {
+    margin: 2rem;
+}
 .card-container {
     display: flex;
     justify-content: center;
@@ -66,7 +81,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 80%;
+    width: 70%;
     align-items: center;
 }
 </style>
