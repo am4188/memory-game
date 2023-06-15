@@ -4,8 +4,12 @@
         <h1>Correct Selections: {{ $store.state.matches }}</h1>
         <h1>Attempts: {{ $store.state.attempts }}</h1>
         <h1>Match Percentage: {{calculateMatchPercentage() }}%</h1>
-        
-    </div>
+    
+        <div class="hard-mode-button">
+            <button v-on:click="$store.commit('TOGGLE_HARD_MODE')">Hard Mode</button>
+        </div>
+    </div>  
+    
     <div class="card-container">
         <div class="memory-cards">
             <memory-card v-for="(card, index) in this.$store.state.arrayOfCards" v-bind:key="generateKey(index)" v-bind:card="card"/>
@@ -20,7 +24,6 @@ import MemoryCard from '../components/MemoryCard.vue'
 export default {   
     data() {
         return {
-            
             
         }
     },
@@ -55,7 +58,8 @@ export default {
                 return "";
             }
             return ((this.$store.state.matches/this.$store.state.attempts) * 100).toFixed(0);
-        }
+        },
+        
     }
     
 }
@@ -65,7 +69,10 @@ export default {
 .scoreboard {
     display: flex;
     justify-content: center;
-    border: 3px solid black;
+    align-items: center;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    
 }
 
 .scoreboard > * {
@@ -76,6 +83,16 @@ export default {
     justify-content: center;
 
 }
+
+.hard-mode-button {
+    /* display: flex;
+    justify-content: flex-end; */
+    position: absolute;
+  
+  
+    margin-top: 2rem;
+    margin-left: 80%;
+}
 .memory-cards {
     margin: 1rem;
     display: flex;
@@ -83,5 +100,13 @@ export default {
     justify-content: center;
     width: 70%;
     align-items: center;
+}
+
+button {
+    background-color: rgb(212, 27, 27);
+    font-size: 2rem;
+    border: 3px solid black;
+    border-radius: 5%;
+    
 }
 </style>

@@ -67,6 +67,7 @@ export default new Vuex.Store({
         showCard: false
       },
     ],
+    hardModeEnabled: false,
     selectedCards: [],
     matchedCards: [],
     arrayOfCards: [],
@@ -76,6 +77,10 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
+    TOGGLE_HARD_MODE(state) {
+      state.hardModeEnabled = !state.hardModeEnabled
+    }
+
   },
   actions: {
   },

@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="card" v-on:click="clicked(card)">
+    <div class="card" v-on:click="clicked(card)" v-bind:class="{ 'rotate' : $store.state.hardModeEnabled }">
       <img v-if="card.showCard" v-bind:src="card.image">
-      <img v-else src="/card-back-side.jpg"/>
+      <img v-else src="/card-back-side.jpg" />
     </div>
 </div>
 </template>
@@ -11,10 +11,10 @@
 export default {
   data() {
     return {
-
+      
     }
   },
-  props: ['card'], 
+  props: ['card', 'hardModeEnabled'], 
   name: 'MemoryCard',
   methods: {
     toggleShowCard(card) {
@@ -53,7 +53,9 @@ export default {
       this.$store.state.arrayOfCards.find(card => card.id === this.$store.state.selectedCards[1].id).showCard = false;
      
       this.$store.state.selectedCards = [];
-    }
+    },
+
+    
     
   }
 }
@@ -70,7 +72,7 @@ img {
 }
 
 .rotate {
-  animation: rotate-stop 5s infinite linear;
+  animation: rotate-stop 2s infinite linear;
   transform: rotate();
 }
 
