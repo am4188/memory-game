@@ -7,62 +7,62 @@ export default new Vuex.Store({
   state: {
     cards: [
       {
-        name: "Paolo",
+        name: "Paolo Banchero",
         image: '/paolo-banchero.webp',
         showCard: false
       },
       {
-        name: "Franz",
+        name: "Franz Wagner",
         image: '/franz-wagner.webp',
         showCard: false
       },
       {
-        name: "Giannis",
+        name: "Giannis Antetokounmpo",
         image: '/giannis-antetokounmpo.webp',
         showCard: false
       },
       {
-        name: "Jamal",
+        name: "Jamal Murray",
         image: '/jamal-murray.avif',
         showCard: false
       },
       {
-        name: "Joel",
+        name: "Joel Embiid",
         image: '/joel-embiid.webp',
         showCard: false
       },
       {
-        name: "Kevin",
+        name: "Kevin Durant",
         image: '/kevin-durant.avif',
         showCard: false
       },
       {
-        name: "Lebron",
+        name: "Lebron James",
         image: '/lebron-james.webp',
         showCard: false
       },
       {
-        name: "Luka",
+        name: "Luka Doncic",
         image: '/luka-doncic.webp',
         showCard: false
       },
       {
-        name: "Nikola",
+        name: "Nikola Jokic",
         image: '/nikola-jokic.webp',
         showCard: false
       },
       {
-        name: "Stephen",
+        name: "Stephen Curry",
         image: '/stephen-curry.webp',
         showCard: false
       },
       {
-        name: "Donavan",
+        name: "Donavan Mitchell",
         image: '/donavan-mitchell.webp',
         showCard: false
       },
       {
-        name: "Damian",
+        name: "Damian Lillard",
         image: '/damian-lillard.webp',
         showCard: false
       },

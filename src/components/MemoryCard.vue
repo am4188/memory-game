@@ -23,8 +23,8 @@ export default {
     clicked(card) {
       if(!card.showCard && this.$store.state.selectedCards.length < 2) {
         card.showCard = true;
-        // if card is second card, check if the two cards match
         this.$store.state.selectedCards.push(card);
+
         if(this.$store.state.selectedCards.length === 2) {
           if(this.checkForMatch()) {
             this.$store.state.matchedCards.push(this.$store.state.selectedCards[0]);
@@ -33,11 +33,8 @@ export default {
             this.$store.state.selectedCards = [];
             this.$store.state.matches++;
           } else {
-            setTimeout(this.hideCards, 1200);
-            
-          }
-          //setTimeout(this.hideCards, 3000);
-          
+            setTimeout(this.hideCards, 1200);            
+          }          
           this.$store.state.attempts++;
         }
         console.log("and now the length of selectedCards is: " + this.$store.state.selectedCards.length);
