@@ -66,6 +66,46 @@ export default new Vuex.Store({
         image: '/damian-lillard.webp',
         showCard: false
       },
+      {
+        name: "Jayson Tatum",
+        image: '/jayson-tatum.webp',
+        showCard: false
+      },
+      {
+        name: "Jalen Brunson",
+        image: '/jalen-brunson.webp',
+        showCard: false
+      },
+      {
+        name: "Zach Lavine",
+        image: '/zach-lavine.webp',
+        showCard: false
+      },
+      {
+        name: "Trae Young",
+        image: '/trae-young.webp',
+        showCard: false
+      },
+      {
+        name: "Shae Gilgeous-Alexander",
+        image: '/shae-gilgeous-alexander.webp',
+        showCard: false
+      },
+      {
+        name: "Devin Booker",
+        image: '/devin-booker.webp',
+        showCard: false
+      },
+      {
+        name: "De'Aaron Fox",
+        image: '/deaaron-fox.webp',
+        showCard: false
+      },
+      {
+        name: "Domantas Sabonis",
+        image: '/domantas-sabonis.webp',
+        showCard: false
+      },
     ],
     hardModeEnabled: false,
     selectedCards: [],

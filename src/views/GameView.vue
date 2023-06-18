@@ -30,10 +30,25 @@ export default {
     name: 'GameView',
     components: {MemoryCard},
     created() {
-        this.$store.state.cards.forEach(card => {
+        // take 12 of the cards in the state with no repeats:
+        // create an array of chosenCards
+        let chosenCards = [];
+        // create a loop that runs while the length of chosenCards is less than 12
+        while(chosenCards.length < 12) {
+        // create a random number between 1 and the length of the cards array
+        let objectNumToAdd = Math.floor(Math.random() * this.$store.state.cards.length);
+        // if chosenCards does not include the card object, add it
+        if(!chosenCards.includes(this.$store.state.cards[objectNumToAdd])) {
+            chosenCards.push(this.$store.state.cards[objectNumToAdd]);
+        }
+        }
+
+
+        // print out chosenCards. Once it works, replace the forEach below with chosenCards
+        chosenCards.forEach(card => {
             this.$store.state.arrayOfCards.push(card);
         });
-        for(let i = 0; i < this.$store.state.cards.length; i++) {
+        for(let i = 0; i < chosenCards.length; i++) {
             let dupCard = {
                 name: this.$store.state.arrayOfCards[i].name,
                 image: this.$store.state.arrayOfCards[i].image,

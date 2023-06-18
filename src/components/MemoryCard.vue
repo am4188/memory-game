@@ -72,7 +72,7 @@ img {
 }
 
 .rotate {
-  animation: rotate-stop 2s infinite linear;
+  animation: rotate-stop 1.5s infinite linear;
   transform: rotate();
 }
 
@@ -81,7 +81,10 @@ img {
   0%{
     transform: rotate(0deg);
   }
-  5%, 25%{
+  100% {
+    transform: rotate(360deg);
+  }
+  /* 5%, 25%{
     transform: rotate(90deg);
   }
   30%, 50%{
@@ -92,6 +95,6 @@ img {
   }
   80%, 100%{
     transform: rotate(360deg);
-  }
+  } */
 }
 </style>
